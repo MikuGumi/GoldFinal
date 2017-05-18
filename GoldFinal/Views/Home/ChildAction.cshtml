@@ -1,0 +1,37 @@
+﻿@model List<GoldFinal.Models.GoldModels>
+
+@{
+    ViewBag.Title = "ChildAction";
+    Layout = null;
+}
+
+@{int i = 0;}
+<tr>
+    <th>#</th>
+    <th>類別</th>
+    <th>日期</th>
+    <th>金額</th>
+    <th>備註</th>
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@(++i)</td>       
+        <td>
+            @if (item.Sort.Contains("支出"))
+            {
+                <font color="red">@item.Sort</font>
+            }
+            else
+            {
+                <font color="blue">@item.Sort</font>
+            }
+        </td>
+        <td>@item.Date.ToString("yyyy-mm-dd")</td>
+        <td>@item.Cash.ToString("#,####")</td>
+        <td>@item.Remark</td>
+    </tr>
+}
+
+
